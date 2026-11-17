@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<package version="1.0">
+    <description>Performance: parsing, transformation, predicates, dataset loading</description>
+    <author mailto="maxim.menshikov@interpretica.io" />
+    <session track_conf="silent">
+        <prologue><script name="prologue"><objective>Prepare the perf group.</objective></script></prologue>
+        <epilogue><script name="epilogue"><objective>Finalize the perf group.</objective></script></epilogue>
+        <run>
+            <script name="parse"><objective>Parsing throughput by vertex count, cold and warm.</objective></script>
+            <arg name="format"><value>wkt</value><value>wkb</value><value>geojson</value></arg>
+        </run>
+        <run>
+            <script name="transform"><objective>Transformation throughput by point count, cold and warm.</objective></script>
+            <arg name="pair"><value>pttm06</value><value>bng</value></arg>
+        </run>
+        <run><script name="predicate"><objective>Predicate latency by polygon complexity, plain and prepared.</objective></script></run>
+        <run>
+            <script name="dataset_load"><objective>Dataset open time and scan rate by feature count.</objective></script>
+            <arg name="driver"><value>GPKG</value><value>GeoJSON</value></arg>
+        </run>
+    </session>
+</package>

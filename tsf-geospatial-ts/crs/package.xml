@@ -1,0 +1,39 @@
+<?xml version="1.0" ?>
+<package version="1.0">
+    <description>Coordinate reference systems and transformations</description>
+    <author mailto="maxim.menshikov@interpretica.io" />
+    <session track_conf="silent">
+        <prologue><script name="prologue"><objective>Prepare the crs group.</objective></script></prologue>
+        <epilogue><script name="epilogue"><objective>Finalize the crs group.</objective></script></epilogue>
+        <run>
+            <script name="lookup"><objective>Type, axis order, unit and area of use of a CRS, and its WKT2 round trip.</objective></script>
+            <arg name="crs"><value>EPSG:4326</value><value>OGC:CRS84</value><value>EPSG:4979</value><value>EPSG:3857</value><value>EPSG:32629</value><value>EPSG:27700</value><value>EPSG:2227</value><value>EPSG:32661</value><value>urn:ogc:def:crs:EPSG::3763</value></arg>
+        </run>
+        <run>
+            <script name="gn7_2"><objective>The IOGP Guidance Note 7-2 worked example of a projection method, forward and back.</objective></script>
+            <arg name="method"><value>tm</value><value>lcc2sp</value><value>merc_a</value><value>ps_a</value><value>pseudo_merc</value></arg>
+        </run>
+        <run>
+            <script name="axis_order"><objective>Axis order is the caller's; never assumed, never swapped silently.</objective></script>
+            <arg name="axis"><value>gis</value><value>authority</value></arg>
+        </run>
+        <run>
+            <script name="accuracy"><objective>Exactness, accuracy, ballparks and fallbacks reported for what they are.</objective></script>
+            <arg name="pair"><value>conversion_bng</value><value>conversion_webmerc</value><value>helmert_etrs89</value><value>helmert_osgb36</value><value>datum_nad27</value><value>ballpark</value></arg>
+        </run>
+        <run>
+            <script name="domain"><objective>Coordinates outside the area of use counted and, strictly, refused; non-finite results refused.</objective></script>
+            <arg name="point"><value>inside</value><value>outside</value><value>wrong_zone</value><value>pole</value><value>far_side</value></arg>
+        </run>
+        <run><script name="compare"><objective>Equivalent, axis-swapped and different reference systems told apart.</objective></script></run>
+        <run>
+            <script name="bounds"><objective>A densified box contains its curved edges; corners alone do not (control).</objective></script>
+            <arg name="densify"><value>0</value><value>21</value></arg>
+        </run>
+        <run>
+            <script name="transform_geom"><objective>A holed polygon round-trips through a projection to a millimetre, Z and M kept.</objective></script>
+            <arg name="dims"><value>xy</value><value>xyz</value><value>xym</value><value>xyzm</value></arg>
+        </run>
+        <run><script name="validate"><objective>Unknown, malformed and non-CRS definitions refused as results; deprecation reported.</objective></script></run>
+    </session>
+</package>

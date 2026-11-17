@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+<package version="1.0">
+    <description>Rasters: GeoTIFF metadata, statistics, comparison, scale</description>
+    <author mailto="maxim.menshikov@interpretica.io" />
+    <session track_conf="silent">
+        <prologue><script name="prologue"><objective>Prepare the raster group.</objective></script></prologue>
+        <epilogue><script name="epilogue"><objective>Finalize the raster group.</objective></script></epilogue>
+        <run>
+            <script name="metadata"><objective>GeoTIFF metadata read back as written, every pixel type, both layouts.</objective></script>
+            <arg name="type"><value>Byte</value><value>UInt16</value><value>Int16</value><value>Float32</value><value>Float64</value></arg>
+            <arg name="layout"><value>tiled</value><value>striped</value></arg>
+        </run>
+        <run>
+            <script name="statistics"><objective>Tiled band statistics against closed forms, at every tile size.</objective></script>
+            <arg name="pattern"><value>gradient</value><value>checker</value><value>constant</value></arg>
+        </run>
+        <run>
+            <script name="compare"><objective>Raster comparison finds the one difference made on purpose.</objective></script>
+            <arg name="change"><value>none</value><value>noise</value><value>nodata</value><value>geotransform</value><value>crs</value><value>size</value><value>type</value></arg>
+        </run>
+        <run>
+            <script name="nodata"><objective>NoData pixels counted exactly and kept out of the statistics.</objective></script>
+            <arg name="every"><value>0</value><value>7</value><value>100</value></arg>
+        </run>
+        <run>
+            <script name="large"><objective>Large rasters in tiles: memory stays near a tile's worth.</objective></script>
+            <arg name="size"><value>1024</value><value>4096</value><value>8192</value></arg>
+        </run>
+        <run>
+            <script name="formats"><objective>COG, PNG and HFA written and inspected.</objective></script>
+            <arg name="driver"><value>COG</value><value>PNG</value><value>HFA</value></arg>
+        </run>
+        <run><script name="window"><objective>Window reads return exactly the window's pixels.</objective></script></run>
+    </session>
+</package>

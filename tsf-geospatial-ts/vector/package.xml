@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<package version="1.0">
+    <description>Vector datasets: formats, validation, comparison, scale</description>
+    <author mailto="maxim.menshikov@interpretica.io" />
+    <session track_conf="silent">
+        <prologue><script name="prologue"><objective>Prepare the vector group.</objective></script></prologue>
+        <epilogue><script name="epilogue"><objective>Finalize the vector group.</objective></script></epilogue>
+        <run>
+            <script name="formats"><objective>Every supported format reads back what was written to it.</objective></script>
+            <arg name="driver"><value>GeoJSON</value><value>GeoJSONSeq</value><value>GPKG</value><value>ESRI Shapefile</value><value>FlatGeobuf</value><value>KML</value><value>GML</value></arg>
+        </run>
+        <run>
+            <script name="defects"><objective>Validation finds exactly the planted defects, at their features.</objective></script>
+            <arg name="defect"><value>invalid</value><value>dup_id</value><value>missing_geom</value><value>empty_geom</value><value>out_of_range</value><value>wrong_type</value><value>bad_attr</value><value>null_attr</value></arg>
+            <arg name="count"><value>1</value><value>7</value></arg>
+        </run>
+        <run>
+            <script name="compare"><objective>Comparison finds exactly the change made by an independent program; order never matters.</objective></script>
+            <arg name="change"><value>none</value><value>reordered</value><value>moved</value><value>attribute</value><value>deleted</value><value>inserted</value><value>within_tolerance</value><value>crs</value></arg>
+        </run>
+        <run><script name="handmade"><objective>A hand-written GeoJSON with one defect of each kind, validated.</objective></script></run>
+        <run><script name="layers"><objective>CRS inconsistency across layers and against the expected CRS.</objective></script></run>
+        <run>
+            <script name="large"><objective>Large datasets validated in bounded memory.</objective></script>
+            <arg name="features"><value>10000</value><value>50000</value><value>200000</value></arg>
+        </run>
+        <run><script name="fetch"><objective>Bounded pages, attribute and box filters, single geometries.</objective></script></run>
+    </session>
+</package>

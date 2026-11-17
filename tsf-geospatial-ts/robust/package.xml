@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<package version="1.0">
+    <description>Robustness: limits, mutated input, cleanup, RPC failures, drivers</description>
+    <author mailto="maxim.menshikov@interpretica.io" />
+    <session track_conf="silent">
+        <prologue><script name="prologue"><objective>Prepare the robust group.</objective></script></prologue>
+        <epilogue><script name="epilogue"><objective>Finalize the robust group.</objective></script></epilogue>
+        <run>
+            <script name="limits"><objective>Every configured limit holds with its own error.</objective></script>
+            <arg name="limit"><value>max_vertices</value><value>max_depth</value><value>max_input</value><value>max_handles</value><value>max_features</value><value>timeout</value></arg>
+        </run>
+        <run>
+            <script name="fuzz"><objective>Mutated inputs accepted or refused with a defined error; the server never dies.</objective></script>
+            <arg name="target"><value>wkt</value><value>wkb</value><value>geojson</value><value>crs</value></arg>
+        </run>
+        <run><script name="cleanup"><objective>Objects and memory released after success and after failure.</objective></script></run>
+        <run><script name="rpc_failure"><objective>Handles scoped to their RPC server; timeouts fail cleanly.</objective></script></run>
+        <run><script name="drivers"><objective>Untrusted files do not choose their driver.</objective></script></run>
+    </session>
+</package>

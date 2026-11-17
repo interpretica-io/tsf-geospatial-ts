@@ -1,0 +1,41 @@
+<?xml version="1.0" ?>
+<package version="1.0">
+    <description>Geometries: formats, predicates, operations, measures, validation</description>
+    <author mailto="maxim.menshikov@interpretica.io" />
+    <session track_conf="silent">
+        <prologue><script name="prologue"><objective>Prepare the geometry group.</objective></script></prologue>
+        <epilogue><script name="epilogue"><objective>Finalize the geometry group.</objective></script></epilogue>
+        <run>
+            <script name="roundtrip"><objective>Every type and dimensionality through every format, Z and M kept where the format can carry them.</objective></script>
+            <arg name="format"><value>wkt</value><value>wkb</value><value>ewkb</value><value>geojson</value></arg>
+            <arg name="dims"><value>xy</value><value>xyz</value><value>xym</value><value>xyzm</value></arg>
+        </run>
+        <run>
+            <script name="malformed"><objective>Malformed WKT, WKB and GeoJSON refused with a defined error; the engine unharmed.</objective></script>
+            <arg name="input"><value>unclosed_ring</value><value>truncated_wkt</value><value>too_few_points</value><value>unknown_type</value><value>odd_hex</value><value>truncated_wkb</value><value>huge_count</value><value>bad_byte_order</value><value>trailing_bytes</value><value>bad_json</value><value>unknown_json_type</value><value>deep_nesting</value><value>empty_text</value></arg>
+        </run>
+        <run>
+            <script name="predicates"><objective>DE-9IM predicates over pairs with known answers, both ways round.</objective></script>
+            <arg name="predicate"><value>intersects</value><value>contains</value><value>within</value><value>touches</value><value>crosses</value><value>overlaps</value><value>disjoint</value><value>equals</value><value>covers</value><value>covered_by</value></arg>
+        </run>
+        <run>
+            <script name="constructive"><objective>Overlay, buffer and simplification against closed forms.</objective></script>
+            <arg name="op"><value>intersection</value><value>union</value><value>difference</value><value>sym_difference</value><value>buffer</value><value>simplify</value></arg>
+        </run>
+        <run>
+            <script name="measure"><objective>Distances, lengths, areas and perimeters, planar and geodesic, against published values.</objective></script>
+            <arg name="what"><value>distance</value><value>length</value><value>area</value><value>perimeter</value></arg>
+            <arg name="mode"><value>planar</value><value>geodesic</value></arg>
+        </run>
+        <run>
+            <script name="validation"><objective>Each geometry defect reported with its category; nothing repaired.</objective></script>
+            <arg name="defect"><value>self_intersection</value><value>ring_self_intersection</value><value>hole_outside</value><value>nested_holes</value><value>disconnected_interior</value><value>unclosed_ring</value><value>degenerate</value><value>non_finite</value><value>duplicate_vertex</value><value>empty</value></arg>
+        </run>
+        <run>
+            <script name="repair"><objective>Explicit repair makes a valid copy and leaves the original alone.</objective></script>
+            <arg name="defect"><value>bowtie</value><value>bowtie_structure</value><value>hole_outside</value><value>duplicate_vertex</value><value>clockwise</value></arg>
+        </run>
+        <run><script name="units"><objective>Planar measures keep the CRS unit; degrees are never passed off as metres.</objective></script></run>
+        <run><script name="derive"><objective>Bounds, centroids and envelopes of known shapes.</objective></script></run>
+    </session>
+</package>

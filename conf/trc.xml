@@ -1,0 +1,1527 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<trc_db unknown_exp_status="passed_ok">
+  <test name="tsf-geospatial-ts" type="package">
+    <objective>Geospatial Test Suite</objective>
+    <notes />
+    <iter result="PASSED">
+      <notes />
+      <test name="prologue" type="script">
+        <objective>Test suite prologue</objective>
+        <notes />
+        <iter result="PASSED">
+          <notes />
+        </iter>
+      </test>
+      <test name="geometry" type="package">
+        <objective>Geometries: formats, predicates, operations, measures, validation</objective>
+        <notes />
+        <iter result="PASSED">
+          <notes />
+          <test name="prologue" type="script">
+            <objective>Group prologue</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="roundtrip" type="script">
+            <objective>Every type and dimensionality through every format, Z and M kept where the format can carry them.</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="format">wkt</arg>
+              <arg name="dims">xy</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="format">wkt</arg>
+              <arg name="dims">xyz</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="format">wkt</arg>
+              <arg name="dims">xym</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="format">wkt</arg>
+              <arg name="dims">xyzm</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="format">wkb</arg>
+              <arg name="dims">xy</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="format">wkb</arg>
+              <arg name="dims">xyz</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="format">wkb</arg>
+              <arg name="dims">xym</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="format">wkb</arg>
+              <arg name="dims">xyzm</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="format">ewkb</arg>
+              <arg name="dims">xy</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="format">ewkb</arg>
+              <arg name="dims">xyz</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="format">ewkb</arg>
+              <arg name="dims">xym</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="format">ewkb</arg>
+              <arg name="dims">xyzm</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="format">geojson</arg>
+              <arg name="dims">xy</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="format">geojson</arg>
+              <arg name="dims">xyz</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="format">geojson</arg>
+              <arg name="dims">xym</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="format">geojson</arg>
+              <arg name="dims">xyzm</arg>
+              <notes />
+            </iter>
+          </test>
+          <test name="malformed" type="script">
+            <objective>Malformed WKT, WKB and GeoJSON refused with a defined error; the engine unharmed.</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="input">unclosed_ring</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="input">truncated_wkt</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="input">too_few_points</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="input">unknown_type</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="input">odd_hex</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="input">truncated_wkb</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="input">huge_count</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="input">bad_byte_order</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="input">trailing_bytes</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="input">bad_json</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="input">unknown_json_type</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="input">deep_nesting</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="input">empty_text</arg>
+              <notes />
+            </iter>
+          </test>
+          <test name="predicates" type="script">
+            <objective>DE-9IM predicates over pairs with known answers, both ways round.</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="predicate">intersects</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="predicate">contains</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="predicate">within</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="predicate">touches</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="predicate">crosses</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="predicate">overlaps</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="predicate">disjoint</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="predicate">equals</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="predicate">covers</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="predicate">covered_by</arg>
+              <notes />
+            </iter>
+          </test>
+          <test name="constructive" type="script">
+            <objective>Overlay, buffer and simplification against closed forms.</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="op">intersection</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="op">union</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="op">difference</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="op">sym_difference</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="op">buffer</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="op">simplify</arg>
+              <notes />
+            </iter>
+          </test>
+          <test name="measure" type="script">
+            <objective>Distances, lengths, areas and perimeters, planar and geodesic, against published values.</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="what">distance</arg>
+              <arg name="mode">planar</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="what">distance</arg>
+              <arg name="mode">geodesic</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="what">length</arg>
+              <arg name="mode">planar</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="what">length</arg>
+              <arg name="mode">geodesic</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="what">area</arg>
+              <arg name="mode">planar</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="what">area</arg>
+              <arg name="mode">geodesic</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="what">perimeter</arg>
+              <arg name="mode">planar</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="what">perimeter</arg>
+              <arg name="mode">geodesic</arg>
+              <notes />
+            </iter>
+          </test>
+          <test name="validation" type="script">
+            <objective>Each geometry defect reported with its category; nothing repaired.</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="defect">self_intersection</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="defect">ring_self_intersection</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="defect">hole_outside</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="defect">nested_holes</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="defect">disconnected_interior</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="defect">unclosed_ring</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="defect">degenerate</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="defect">non_finite</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="defect">duplicate_vertex</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="defect">empty</arg>
+              <notes />
+            </iter>
+          </test>
+          <test name="repair" type="script">
+            <objective>Explicit repair makes a valid copy and leaves the original alone.</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="defect">bowtie</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="defect">bowtie_structure</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="defect">hole_outside</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="defect">duplicate_vertex</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="defect">clockwise</arg>
+              <notes />
+            </iter>
+          </test>
+          <test name="units" type="script">
+            <objective>Planar measures keep the CRS unit; degrees are never passed off as metres.</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="derive" type="script">
+            <objective>Bounds, centroids and envelopes of known shapes.</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="epilogue" type="script">
+            <objective>Group epilogue</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+        </iter>
+      </test>
+      <test name="crs" type="package">
+        <objective>Coordinate reference systems and transformations</objective>
+        <notes />
+        <iter result="PASSED">
+          <notes />
+          <test name="prologue" type="script">
+            <objective>Group prologue</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="lookup" type="script">
+            <objective>Type, axis order, unit and area of use of a CRS, and its WKT2 round trip.</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="crs">EPSG:4326</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="crs">OGC:CRS84</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="crs">EPSG:4979</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="crs">EPSG:3857</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="crs">EPSG:32629</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="crs">EPSG:27700</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="crs">EPSG:2227</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="crs">EPSG:32661</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="crs">urn:ogc:def:crs:EPSG::3763</arg>
+              <notes />
+            </iter>
+          </test>
+          <test name="gn7_2" type="script">
+            <objective>The IOGP Guidance Note 7-2 worked example of a projection method, forward and back.</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="method">tm</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="method">lcc2sp</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="method">merc_a</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="method">ps_a</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="method">pseudo_merc</arg>
+              <notes />
+            </iter>
+          </test>
+          <test name="axis_order" type="script">
+            <objective>Axis order is the caller's; never assumed, never swapped silently.</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="axis">gis</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="axis">authority</arg>
+              <notes />
+            </iter>
+          </test>
+          <test name="accuracy" type="script">
+            <objective>Exactness, accuracy, ballparks and fallbacks reported for what they are.</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="pair">conversion_bng</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="pair">conversion_webmerc</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="pair">helmert_etrs89</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="pair">helmert_osgb36</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="pair">datum_nad27</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="pair">ballpark</arg>
+              <notes />
+            </iter>
+          </test>
+          <test name="domain" type="script">
+            <objective>Coordinates outside the area of use counted and, strictly, refused; non-finite results refused.</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="point">inside</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="point">outside</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="point">wrong_zone</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="point">pole</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="point">far_side</arg>
+              <notes />
+            </iter>
+          </test>
+          <test name="compare" type="script">
+            <objective>Equivalent, axis-swapped and different reference systems told apart.</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="bounds" type="script">
+            <objective>A densified box contains its curved edges; corners alone do not (control).</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="densify">0</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="densify">21</arg>
+              <notes />
+            </iter>
+          </test>
+          <test name="transform_geom" type="script">
+            <objective>A holed polygon round-trips through a projection to a millimetre, Z and M kept.</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="dims">xy</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="dims">xyz</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="dims">xym</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="dims">xyzm</arg>
+              <notes />
+            </iter>
+          </test>
+          <test name="validate" type="script">
+            <objective>Unknown, malformed and non-CRS definitions refused as results; deprecation reported.</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="epilogue" type="script">
+            <objective>Group epilogue</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+        </iter>
+      </test>
+      <test name="vector" type="package">
+        <objective>Vector datasets: formats, validation, comparison, scale</objective>
+        <notes />
+        <iter result="PASSED">
+          <notes />
+          <test name="prologue" type="script">
+            <objective>Group prologue</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="formats" type="script">
+            <objective>Every supported format reads back what was written to it.</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="driver">GeoJSON</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="driver">GeoJSONSeq</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="driver">GPKG</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="driver">ESRI Shapefile</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="driver">FlatGeobuf</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="driver">KML</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="driver">GML</arg>
+              <notes />
+            </iter>
+          </test>
+          <test name="defects" type="script">
+            <objective>Validation finds exactly the planted defects, at their features.</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="defect">invalid</arg>
+              <arg name="count">1</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="defect">invalid</arg>
+              <arg name="count">7</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="defect">dup_id</arg>
+              <arg name="count">1</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="defect">dup_id</arg>
+              <arg name="count">7</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="defect">missing_geom</arg>
+              <arg name="count">1</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="defect">missing_geom</arg>
+              <arg name="count">7</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="defect">empty_geom</arg>
+              <arg name="count">1</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="defect">empty_geom</arg>
+              <arg name="count">7</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="defect">out_of_range</arg>
+              <arg name="count">1</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="defect">out_of_range</arg>
+              <arg name="count">7</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="defect">wrong_type</arg>
+              <arg name="count">1</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="defect">wrong_type</arg>
+              <arg name="count">7</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="defect">bad_attr</arg>
+              <arg name="count">1</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="defect">bad_attr</arg>
+              <arg name="count">7</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="defect">null_attr</arg>
+              <arg name="count">1</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="defect">null_attr</arg>
+              <arg name="count">7</arg>
+              <notes />
+            </iter>
+          </test>
+          <test name="compare" type="script">
+            <objective>Comparison finds exactly the change made by an independent program; order never matters.</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="change">none</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="change">reordered</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="change">moved</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="change">attribute</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="change">deleted</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="change">inserted</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="change">within_tolerance</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="change">crs</arg>
+              <notes />
+            </iter>
+          </test>
+          <test name="handmade" type="script">
+            <objective>A hand-written GeoJSON with one defect of each kind, validated.</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="layers" type="script">
+            <objective>CRS inconsistency across layers and against the expected CRS.</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="large" type="script">
+            <objective>Large datasets validated in bounded memory.</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="features">10000</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="features">50000</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="features">200000</arg>
+              <notes />
+            </iter>
+          </test>
+          <test name="fetch" type="script">
+            <objective>Bounded pages, attribute and box filters, single geometries.</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="epilogue" type="script">
+            <objective>Group epilogue</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+        </iter>
+      </test>
+      <test name="raster" type="package">
+        <objective>Rasters: GeoTIFF metadata, statistics, comparison, scale</objective>
+        <notes />
+        <iter result="PASSED">
+          <notes />
+          <test name="prologue" type="script">
+            <objective>Group prologue</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="metadata" type="script">
+            <objective>GeoTIFF metadata read back as written, every pixel type, both layouts.</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="type">Byte</arg>
+              <arg name="layout">tiled</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="type">Byte</arg>
+              <arg name="layout">striped</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="type">UInt16</arg>
+              <arg name="layout">tiled</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="type">UInt16</arg>
+              <arg name="layout">striped</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="type">Int16</arg>
+              <arg name="layout">tiled</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="type">Int16</arg>
+              <arg name="layout">striped</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="type">Float32</arg>
+              <arg name="layout">tiled</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="type">Float32</arg>
+              <arg name="layout">striped</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="type">Float64</arg>
+              <arg name="layout">tiled</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="type">Float64</arg>
+              <arg name="layout">striped</arg>
+              <notes />
+            </iter>
+          </test>
+          <test name="statistics" type="script">
+            <objective>Tiled band statistics against closed forms, at every tile size.</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="pattern">gradient</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="pattern">checker</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="pattern">constant</arg>
+              <notes />
+            </iter>
+          </test>
+          <test name="compare" type="script">
+            <objective>Raster comparison finds the one difference made on purpose.</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="change">none</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="change">noise</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="change">nodata</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="change">geotransform</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="change">crs</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="change">size</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="change">type</arg>
+              <notes />
+            </iter>
+          </test>
+          <test name="nodata" type="script">
+            <objective>NoData pixels counted exactly and kept out of the statistics.</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="every">0</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="every">7</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="every">100</arg>
+              <notes />
+            </iter>
+          </test>
+          <test name="large" type="script">
+            <objective>Large rasters in tiles: memory stays near a tile's worth.</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="size">1024</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="size">4096</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="size">8192</arg>
+              <notes />
+            </iter>
+          </test>
+          <test name="formats" type="script">
+            <objective>COG, PNG and HFA written and inspected.</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="driver">COG</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="driver">PNG</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="driver">HFA</arg>
+              <notes />
+            </iter>
+          </test>
+          <test name="window" type="script">
+            <objective>Window reads return exactly the window's pixels.</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="epilogue" type="script">
+            <objective>Group epilogue</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+        </iter>
+      </test>
+      <test name="tracking" type="package">
+        <objective>Geolocation and tracking</objective>
+        <notes />
+        <iter result="PASSED">
+          <notes />
+          <test name="prologue" type="script">
+            <objective>Group prologue</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="sanity" type="script">
+            <objective>Jumps, gaps, ordering, repeated times and impossible speeds found exactly.</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="defect">none</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="defect">jump</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="defect">gap</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="defect">out_of_order</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="defect">duplicate_time</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="defect">speed</arg>
+              <notes />
+            </iter>
+          </test>
+          <test name="error" type="script">
+            <objective>Error statistics of a noisy receiver match the Rayleigh distribution.</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="noise">1</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="noise">3</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="noise">10</arg>
+              <notes />
+            </iter>
+          </test>
+          <test name="route" type="script">
+            <objective>Distance of every fix to a reference route.</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="offset">0</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="offset">25</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="offset">100</arg>
+              <notes />
+            </iter>
+          </test>
+          <test name="geofence" type="script">
+            <objective>Geofence entries, exits and violations with their times.</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="scenario">inside</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="scenario">exit</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="scenario">enter</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="scenario">outside</arg>
+              <notes />
+            </iter>
+          </test>
+          <test name="dataset" type="script">
+            <objective>Observations from a projected GeoPackage load into the same track as from text.</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="epilogue" type="script">
+            <objective>Group epilogue</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+        </iter>
+      </test>
+      <test name="generation" type="package">
+        <objective>Deterministic generation of test inputs</objective>
+        <notes />
+        <iter result="PASSED">
+          <notes />
+          <test name="prologue" type="script">
+            <objective>Group prologue</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="determinism" type="script">
+            <objective>The same options give the same items on any RPC server; ids are deterministic.</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="kind">points</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="kind">grid</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="kind">polygons</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="kind">lines</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="kind">boundary</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="kind">outliers</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="kind">trajectory</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="kind">invalid</arg>
+              <notes />
+            </iter>
+          </test>
+          <test name="guarantees" type="script">
+            <objective>Every item is what it is promised to be: valid, or with its defect.</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="kind">points</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="kind">grid</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="kind">polygons</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="kind">lines</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="kind">boundary</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="kind">outliers</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="kind">trajectory</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="kind">invalid</arg>
+              <notes />
+            </iter>
+          </test>
+          <test name="optin" type="script">
+            <objective>Invalid geometries only on request; no other generator makes one.</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="epilogue" type="script">
+            <objective>Group epilogue</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+        </iter>
+      </test>
+      <test name="services" type="package">
+        <objective>OGC services: WMS, WFS, OGC API - Features</objective>
+        <notes />
+        <iter result="PASSED">
+          <notes />
+          <test name="prologue" type="script">
+            <objective>Group prologue</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="capabilities" type="script">
+            <objective>GetCapabilities checked for geospatial sense; control defects caught.</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="target">mapserver_wms</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="target">mapserver_wfs</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="target">control_wms_good</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="target">control_wms_bad_bbox</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="target">control_wms_bad_crs</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="target">control_wfs_good</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="target">control_wfs_bad_crs</arg>
+              <notes />
+            </iter>
+          </test>
+          <test name="map" type="script">
+            <objective>GetMap answers with a non-blank image of the size asked for.</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="target">mapserver_wms</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="target">control_wms_good</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="target">control_wms_xml_exception</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="target">control_wms_wrong_size</arg>
+              <notes />
+            </iter>
+          </test>
+          <test name="features" type="script">
+            <objective>Features valid, complete, inside the advertised extent.</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="target">mapserver_wfs</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="target">pygeoapi_oapif</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="target">control_oapif_good</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="target">control_oapif_invalid_geom</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="target">control_oapif_bad_bbox</arg>
+              <notes />
+            </iter>
+          </test>
+          <test name="paging" type="script">
+            <objective>The same features whatever the page size.</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="target">mapserver_wfs</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="target">pygeoapi_oapif</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="target">control_oapif_good</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="target">control_oapif_paging_dup</arg>
+              <notes />
+            </iter>
+          </test>
+          <test name="access" type="script">
+            <objective>Access restrictions enforced; an open area caught.</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="mode">auth</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="mode">no_auth</arg>
+              <notes />
+            </iter>
+          </test>
+          <test name="conformance" type="script">
+            <objective>OGC API - Features landing, conformance, collections.</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="target">pygeoapi_oapif</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="target">control_oapif_good</arg>
+              <notes />
+            </iter>
+          </test>
+          <test name="epilogue" type="script">
+            <objective>Group epilogue</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+        </iter>
+      </test>
+      <test name="postgis" type="package">
+        <objective>PostGIS through tsf-sql</objective>
+        <notes />
+        <iter result="PASSED">
+          <notes />
+          <test name="prologue" type="script">
+            <objective>Group prologue</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="validate" type="script">
+            <objective>Stored geometry defects, SRIDs and types counted; invalid rows named.</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="index" type="script">
+            <objective>A spatial index found and used, or reported absent.</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="index">none</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="index">gist</arg>
+              <notes />
+            </iter>
+          </test>
+          <test name="predicates" type="script">
+            <objective>PostGIS and the engine agree on every DE-9IM predicate.</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="compare" type="script">
+            <objective>Stored geometries compared with expected ones, with tolerance.</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="epilogue" type="script">
+            <objective>Group epilogue</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+        </iter>
+      </test>
+      <test name="robust" type="package">
+        <objective>Robustness: limits, mutated input, cleanup, RPC failures, drivers</objective>
+        <notes />
+        <iter result="PASSED">
+          <notes />
+          <test name="prologue" type="script">
+            <objective>Group prologue</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="limits" type="script">
+            <objective>Every configured limit holds with its own error.</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="limit">max_vertices</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="limit">max_depth</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="limit">max_input</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="limit">max_handles</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="limit">max_features</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="limit">timeout</arg>
+              <notes />
+            </iter>
+          </test>
+          <test name="fuzz" type="script">
+            <objective>Mutated inputs accepted or refused with a defined error; the server never dies.</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="target">wkt</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="target">wkb</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="target">geojson</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="target">crs</arg>
+              <notes />
+            </iter>
+          </test>
+          <test name="cleanup" type="script">
+            <objective>Objects and memory released after success and after failure.</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="rpc_failure" type="script">
+            <objective>Handles scoped to their RPC server; timeouts fail cleanly.</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="drivers" type="script">
+            <objective>Untrusted files do not choose their driver.</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="epilogue" type="script">
+            <objective>Group epilogue</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+        </iter>
+      </test>
+      <test name="perf" type="package">
+        <objective>Performance: parsing, transformation, predicates, dataset loading</objective>
+        <notes />
+        <iter result="PASSED">
+          <notes />
+          <test name="prologue" type="script">
+            <objective>Group prologue</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="parse" type="script">
+            <objective>Parsing throughput by vertex count, cold and warm.</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="format">wkt</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="format">wkb</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="format">geojson</arg>
+              <notes />
+            </iter>
+          </test>
+          <test name="transform" type="script">
+            <objective>Transformation throughput by point count, cold and warm.</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="pair">pttm06</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="pair">bng</arg>
+              <notes />
+            </iter>
+          </test>
+          <test name="predicate" type="script">
+            <objective>Predicate latency by polygon complexity, plain and prepared.</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="dataset_load" type="script">
+            <objective>Dataset open time and scan rate by feature count.</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="driver">GPKG</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="driver">GeoJSON</arg>
+              <notes />
+            </iter>
+          </test>
+          <test name="epilogue" type="script">
+            <objective>Group epilogue</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+        </iter>
+      </test>
+      <test name="epilogue" type="script">
+        <objective>Test suite epilogue</objective>
+        <notes />
+        <iter result="PASSED">
+          <notes />
+        </iter>
+      </test>
+    </iter>
+  </test>
+</trc_db>

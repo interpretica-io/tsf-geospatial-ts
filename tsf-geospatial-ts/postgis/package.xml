@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<package version="1.0">
+    <description>PostGIS through tsf-sql</description>
+    <author mailto="maxim.menshikov@interpretica.io" />
+    <session track_conf="silent">
+        <!-- Starts a PostGIS container on the agent (docker needed). -->
+        <prologue><script name="prologue"><objective>Start PostGIS.</objective></script></prologue>
+        <epilogue><script name="epilogue"><objective>Remove the PostGIS container.</objective></script></epilogue>
+        <run><script name="validate"><objective>Stored geometry defects, SRIDs and types counted; invalid rows named.</objective></script></run>
+        <run>
+            <script name="index"><objective>A spatial index found and used, or reported absent.</objective></script>
+            <arg name="index"><value>none</value><value>gist</value></arg>
+        </run>
+        <run><script name="predicates"><objective>PostGIS and the engine agree on every DE-9IM predicate.</objective></script></run>
+        <run><script name="compare"><objective>Stored geometries compared with expected ones, with tolerance.</objective></script></run>
+    </session>
+</package>

@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<package version="1.0">
+    <description>OGC services: WMS, WFS, OGC API - Features</description>
+    <author mailto="maxim.menshikov@interpretica.io" />
+    <session track_conf="silent">
+        <!-- Starts the control server, MapServer and pygeoapi (where
+             installed) on the agent; a test of a server that is not
+             running skips. -->
+        <prologue><script name="prologue"><objective>Start the OGC servers.</objective></script></prologue>
+        <epilogue><script name="epilogue"><objective>Stop the OGC servers.</objective></script></epilogue>
+        <run>
+            <script name="capabilities"><objective>GetCapabilities checked for geospatial sense; control defects caught.</objective></script>
+            <arg name="target"><value>mapserver_wms</value><value>mapserver_wfs</value><value>control_wms_good</value><value>control_wms_bad_bbox</value><value>control_wms_bad_crs</value><value>control_wfs_good</value><value>control_wfs_bad_crs</value></arg>
+        </run>
+        <run>
+            <script name="map"><objective>GetMap answers with a non-blank image of the size asked for.</objective></script>
+            <arg name="target"><value>mapserver_wms</value><value>control_wms_good</value><value>control_wms_xml_exception</value><value>control_wms_wrong_size</value></arg>
+        </run>
+        <run>
+            <script name="features"><objective>Features valid, complete, inside the advertised extent.</objective></script>
+            <arg name="target"><value>mapserver_wfs</value><value>pygeoapi_oapif</value><value>control_oapif_good</value><value>control_oapif_invalid_geom</value><value>control_oapif_bad_bbox</value></arg>
+        </run>
+        <run>
+            <script name="paging"><objective>The same features whatever the page size.</objective></script>
+            <arg name="target"><value>mapserver_wfs</value><value>pygeoapi_oapif</value><value>control_oapif_good</value><value>control_oapif_paging_dup</value></arg>
+        </run>
+        <run>
+            <script name="access"><objective>Access restrictions enforced; an open area caught.</objective></script>
+            <arg name="mode"><value>auth</value><value>no_auth</value></arg>
+        </run>
+        <run>
+            <script name="conformance"><objective>OGC API - Features landing, conformance, collections.</objective></script>
+            <arg name="target"><value>pygeoapi_oapif</value><value>control_oapif_good</value></arg>
+        </run>
+    </session>
+</package>

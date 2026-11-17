@@ -1,0 +1,73 @@
+<?xml version="1.0" ?>
+<package version="1.0">
+    <description>tsf-geospatial geospatial testing suite</description>
+
+    <!-- @page geo-ts Geospatial Test Suite
+          @objective Exercise tsf-geospatial on the agent the suite runs
+                     on: geometry, reference systems, datasets, rasters,
+                     tracking, generation, OGC services, PostGIS,
+                     robustness and performance.
+
+          @par Test Groups:
+          - geometry - formats, Z/M, predicates, operations, measures,
+            validation, repair
+          - crs - lookup, IOGP GN7-2 examples, axis order, accuracy,
+            domains, bounds
+          - vector - formats, planted defects, comparison, large data
+          - raster - GeoTIFF metadata, statistics, comparison, tiles
+          - tracking - sanity, error statistics, routes, geofences
+          - generation - determinism and validity guarantees
+          - services - WMS, WFS, OGC API - Features (MapServer,
+            pygeoapi, and a control server with known defects)
+          - postgis - PostGIS through tsf-sql
+          - robust - limits, mutated input, cleanup, RPC failures
+          - perf - throughput and latency with input complexity
+
+          @par Notes:
+          - Every geometry, dataset and track lives on the agent, in the
+            RPC server that links GEOS, PROJ and GDAL; the tests hold
+            handles and get results and bounded reports.
+          - Reference values are published ones (IOGP Guidance Note 7-2,
+            GeographicLib) or closed forms; defects are planted at known
+            places, and every check has a known-bad control.
+    -->
+
+    <author mailto="maxim.menshikov@interpretica.io" />
+
+    <session track_conf="silent">
+        <!-- @page geo-ts-prologue Test Suite Prologue
+              @objective Record what the agent's engine is.
+        -->
+        <prologue>
+            <script name="prologue">
+                <objective>
+                    Record what the agent's geospatial engine is.
+                    @md
+                </objective>
+            </script>
+        </prologue>
+
+        <!-- @page geo-ts-epilogue Test Suite Epilogue
+              @objective Finalize the test environment.
+        -->
+        <epilogue>
+            <script name="epilogue">
+                <objective>
+                    Finalize the test environment.
+                    @md
+                </objective>
+            </script>
+        </epilogue>
+
+        <run><package name="geometry" /></run>
+        <run><package name="crs" /></run>
+        <run><package name="vector" /></run>
+        <run><package name="raster" /></run>
+        <run><package name="tracking" /></run>
+        <run><package name="generation" /></run>
+        <run><package name="services" /></run>
+        <run><package name="postgis" /></run>
+        <run><package name="robust" /></run>
+        <run><package name="perf" /></run>
+    </session>
+</package>

@@ -1,0 +1,97 @@
+name: build
+
+# Two levels of check.
+#
+# sanity (every push / PR, ~1 min): the suite is built by dispatcher.sh
+# cloning TE and the tsf-geospatial module, so it cannot be compiled in
+# isolation. This job catches the breakage that is cheap to catch
+# without that tree: malformed package/TRC XML, a TRC out of date with
+# the packages, a test C file not wired into meson (or vice versa),
+# shell scripts that do not parse, and an OGC control server that does
+# not answer.
+#
+# integration (manual, workflow_dispatch): the real end-to-end build and
+# run - the Docker image (GEOS, PROJ, GDAL, MapServer, pygeoapi) and the
+# suite on the localhost configuration.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  sanity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libxml2-utils python3
+
+      - name: XML is well-formed (package.xml, trc.xml)
+        run: |
+          set -eux
+          find . -name '*.xml' -not -path './build/*' -not -path './meson-logs/*' \
+            -print0 | xargs -0 -r xmllint --noout
+
+      - name: Every test is wired into meson, and vice versa
+        run: |
+          python3 - <<'PY'
+          import re, glob, os, sys
+          bad = False
+          for mb in sorted(glob.glob('tsf-geospatial-ts/*/meson.build')):
+              g = os.path.dirname(mb)
+              if g.endswith('/lib'):
+                  continue
+              m = re.search(r'tests\s*=\s*\[(.*?)\]', open(mb).read(), re.S)
+              listed = set(re.findall(r"'([^']+)'", m.group(1)))
+              files = {os.path.basename(f)[:-2] for f in glob.glob(g + '/*.c')}
+              if listed != files:
+                  print(g, "meson-only:", sorted(listed - files),
+                        "file-only:", sorted(files - listed))
+                  bad = True
+          sys.exit(1 if bad else 0)
+          PY
+
+      - name: The TRC is the one the packages generate
+        run: |
+          set -eu
+          python3 scripts/gen-trc.py
+          git diff --exit-code conf/trc.xml
+
+      - name: The control OGC server answers
+        run: |
+          set -eu
+          python3 tsf-geospatial-ts/lib/py/ogcserver.py 18741 &
+          sleep 1
+          curl -sf 'http://127.0.0.1:18741/good/wms?SERVICE=WMS&REQUEST=GetCapabilities' | grep -q WMS_Capabilities
+          curl -sf 'http://127.0.0.1:18741/good/ogcapi/conformance' | grep -q conf/core
+          test "$(curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:18741/secure/good/wms)" = 401
+
+      - name: Shell scripts parse
+        run: |
+          set -eu
+          find scripts tsf-geospatial-ts/lib/py -name '*.sh' -print0 | xargs -0 -n1 bash -n
+          echo "all shell scripts parse"
+
+  integration:
+    needs: sanity
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Clone Test Environment beside the suite
+        run: |
+          git clone --depth 1 \
+            https://github.com/interpretica-io/test-environment ../test-environment
+
+      - name: Build the image and run the suite (Docker)
+        run: |
+          ./scripts/run.sh docker guess --cfg=localhost | tee run.out
+          # run.sh exits 0 whatever the tests did: judge by the Tester's
+          # summary against conf/trc.xml.
+          ./scripts/check-run.sh run.out

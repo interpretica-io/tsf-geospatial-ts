@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<package version="1.0">
+    <description>Deterministic generation of test inputs</description>
+    <author mailto="maxim.menshikov@interpretica.io" />
+    <session track_conf="silent">
+        <prologue><script name="prologue"><objective>Prepare the generation group.</objective></script></prologue>
+        <epilogue><script name="epilogue"><objective>Finalize the generation group.</objective></script></epilogue>
+        <run>
+            <script name="determinism"><objective>The same options give the same items on any RPC server; ids are deterministic.</objective></script>
+            <arg name="kind"><value>points</value><value>grid</value><value>polygons</value><value>lines</value><value>boundary</value><value>outliers</value><value>trajectory</value><value>invalid</value></arg>
+        </run>
+        <run>
+            <script name="guarantees"><objective>Every item is what it is promised to be: valid, or with its defect.</objective></script>
+            <arg name="kind"><value>points</value><value>grid</value><value>polygons</value><value>lines</value><value>boundary</value><value>outliers</value><value>trajectory</value><value>invalid</value></arg>
+        </run>
+        <run><script name="optin"><objective>Invalid geometries only on request; no other generator makes one.</objective></script></run>
+    </session>
+</package>

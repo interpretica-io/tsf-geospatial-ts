@@ -1,0 +1,24 @@
+# External repositories the suite builds on. The Builder clones each into
+# build/ext-repos/<name>; conf/builder.conf.lock pins the commit built.
+#
+# To build against an unpushed local change, point url at the checkout
+# beside the suite instead (run.sh mounts the parent directory into the
+# Docker container, so an absolute path to it resolves there too) and
+# leave ref as main. The Builder clones the committed HEAD, not the
+# working tree.
+repositories:
+  - name: tsf_sql
+    url: https://github.com/interpretica-io/tsf-sql.git
+    ref: main
+    libs:
+      - ta_sql
+      - rpcs_sql
+      - tapi_sql
+  - name: tsf_geospatial
+    url: https://github.com/interpretica-io/tsf-geospatial.git
+    ref: main
+    libs:
+      - ta_geospatial
+      - rpcs_geospatial
+      - tapi_geospatial
+      - tapi_geospatial_postgis

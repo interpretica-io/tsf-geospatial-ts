@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+<package version="1.0">
+    <description>Geolocation and tracking</description>
+    <author mailto="maxim.menshikov@interpretica.io" />
+    <session track_conf="silent">
+        <prologue><script name="prologue"><objective>Prepare the tracking group.</objective></script></prologue>
+        <epilogue><script name="epilogue"><objective>Finalize the tracking group.</objective></script></epilogue>
+        <run>
+            <script name="sanity"><objective>Jumps, gaps, ordering, repeated times and impossible speeds found exactly.</objective></script>
+            <arg name="defect"><value>none</value><value>jump</value><value>gap</value><value>out_of_order</value><value>duplicate_time</value><value>speed</value></arg>
+        </run>
+        <run>
+            <script name="error"><objective>Error statistics of a noisy receiver match the Rayleigh distribution.</objective></script>
+            <arg name="noise"><value>1</value><value>3</value><value>10</value></arg>
+        </run>
+        <run>
+            <script name="route"><objective>Distance of every fix to a reference route.</objective></script>
+            <arg name="offset"><value>0</value><value>25</value><value>100</value></arg>
+        </run>
+        <run>
+            <script name="geofence"><objective>Geofence entries, exits and violations with their times.</objective></script>
+            <arg name="scenario"><value>inside</value><value>exit</value><value>enter</value><value>outside</value></arg>
+        </run>
+        <run><script name="dataset"><objective>Observations from a projected GeoPackage load into the same track as from text.</objective></script></run>
+    </session>
+</package>

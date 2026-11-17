@@ -1,0 +1,8 @@
+/** @mainpage tsf-geospatial-ts
+
+Test suite of tsf-geospatial, the geospatial module of the Test
+Environment: geometry (GEOS), reference systems (PROJ) and datasets
+(GDAL/OGR) processed on a Test Agent, driven from the tests over RPC.
+
+See @ref geo-ts for the groups.
+*/
